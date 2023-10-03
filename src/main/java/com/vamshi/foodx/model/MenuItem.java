@@ -14,7 +14,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "food_item")
+@Table(name = "menu_item")
 public class MenuItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
