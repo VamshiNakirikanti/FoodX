@@ -6,4 +6,6 @@ import com.vamshi.foodx.dto.response.CustomerResponse;
 
 public interface CustomerService {
     CustomerResponse addCustomer(CustomerRequest customerRequest);
+
+    CustomerResponse findCustomerByMobile(String mobile);
 }

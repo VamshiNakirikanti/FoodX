@@ -2,6 +2,7 @@ package com.vamshi.foodx.model;
 
 import com.vamshi.foodx.Enum.RestaurantCategory;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -22,8 +23,14 @@ public class Restaurant {
 
     String name;
 
+    String location;
+
     @Enumerated(EnumType.STRING)
     RestaurantCategory restaurantCategory;
+
+    @Column(unique = true,nullable = false)
+    @Size(min = 10,max = 10,message = "Invalid mobile number")
+    String contactNumber;
 
     boolean opened;
 

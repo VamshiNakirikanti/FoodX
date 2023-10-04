@@ -2,6 +2,7 @@ package com.vamshi.foodx.service.impl;
 
 import com.vamshi.foodx.dto.request.CustomerRequest;
 import com.vamshi.foodx.dto.response.CustomerResponse;
+import com.vamshi.foodx.exception.CustomerNotFoundException;
 import com.vamshi.foodx.model.Cart;
 import com.vamshi.foodx.model.Customer;
 import com.vamshi.foodx.repository.CustomerRepository;
@@ -32,5 +33,14 @@ public class CustomerServiceImpl implements CustomerService {
         Customer savedCustomer = customerRepository.save(customer);
 
         return CustomerTransformer.CustomerToCustomerResponse(savedCustomer);
+    }
+
+    @Override
+    public CustomerResponse findCustomerByMobile(String mobile) {
+        Customer customer = customerRepository.findByMobileNo(mobile);
+        if(customer==null){
+            throw new CustomerNotFoundException("Invalid mobile no!!!");
+        }
+        return CustomerTransformer.CustomerToCustomerResponse(customer);
     }
 }
